@@ -2,11 +2,8 @@ $breakpoint: 600px;
 
 .card-wrapper {
   display: flex;
+  flex-direction: column-reverse;
   margin-bottom: $base-unit * 2;
-
-  @media screen and (max-width: $breakpoint) {
-    flex-direction: column-reverse;
-  }
 }
 
 .card {
@@ -80,30 +77,19 @@ $breakpoint: 600px;
 
 .card-date {
   display: flex;
-  flex-basis: 120px;
-  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-direction: row;
   padding: $base-unit;
-  margin-left: $base-unit;
+  padding-left: 0;
+  padding-right: 0;
   font-size: 30px;
   font-weight: 100;
   line-height: 1.1;
-
-  @media screen and (max-width: $breakpoint) {
-    align-items: flex-end;
-    justify-content: flex-end;
-    flex-basis: auto;
-    flex-direction: row;
-    margin-left: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
 }
 
 .card-date__year {
   color: $gray;
   font-size: 22px;
-
-  @media screen and (max-width: $breakpoint) {
-    margin-left: $base-unit;
-  }
+  margin-left: $base-unit;
 }
