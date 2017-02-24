@@ -43,8 +43,7 @@ class Card extends Component {
     if (this.props.open) {
       return (
         <form className="card__input-wrapper" onSubmit={this.handleSubmit}>
-          <input
-            className="card__input"
+          <input className="card__input"
             type="text"
             placeholder="What did I do today?"
             ref="input"
@@ -67,7 +66,7 @@ class Card extends Component {
   }
 
   renderList() {
-    if (this.props.open) {
+    if (this.props.open && this.state.items.length > 0) {
       return (
         <ul>
           {this.state.items.map(item => (

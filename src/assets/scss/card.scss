@@ -57,11 +57,11 @@ $breakpoint: 600px;
   justify-content: flex-end;
   border-top: 1px solid $light-gray;
   padding: $base-unit;
+  background-color: darken($white, 3%);
 }
 
 .card__button {
   color: $white;
-  font-style: 600;
   background-color: $green;
   border: none;
   padding: 5px $base-unit * 2;
