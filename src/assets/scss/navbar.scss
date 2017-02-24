@@ -1,0 +1,11 @@
+.navbar {
+  background-color: $dark-gray;
+  text-align: center;
+  padding: $base-unit 0;
+}
+
+.navbar__brand {
+  color: $white;
+  font-size: 32px;
+  font-weight: 100;
+}

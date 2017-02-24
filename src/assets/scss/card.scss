@@ -1,0 +1,109 @@
+$breakpoint: 600px;
+
+.card-wrapper {
+  display: flex;
+  margin-bottom: $base-unit * 2;
+
+  @media screen and (max-width: $breakpoint) {
+    flex-direction: column-reverse;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+  word-break: break-all;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  padding: $base-unit;
+}
+
+.card__input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__input {
+  background-color: $white;
+  border: 1px solid $light-gray;
+  outline: none;
+  padding: $base-unit $base-unit 4px;
+  box-shadow: inset 0 0px 0px rgba(0,0,0,0.075), 0 0 0px rgba(81,167,232,0.5);
+  transition: all 0.1s ease;
+
+  &:focus {
+    border-color: $crazy-blue;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075), 0 0 5px rgba(81,167,232,0.5);
+  }
+}
+
+.card__input-mirror {
+  margin-top: $base-unit;
+  opacity: 0.5;
+
+  &:before {
+    content: "•";
+    display: inline-block;
+    padding-right: $base-unit;
+  }
+}
+
+.card__button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid $light-gray;
+  padding: $base-unit;
+}
+
+.card__button {
+  color: $white;
+  font-style: 600;
+  background-color: $green;
+  border: none;
+  padding: 5px $base-unit * 2;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: darken($green, 3%);
+  }
+  &:active {
+    background-color: darken($green, 5%);
+  }
+}
+
+.card-date {
+  display: flex;
+  flex-basis: 120px;
+  flex-direction: column;
+  padding: $base-unit;
+  margin-left: $base-unit;
+  font-size: 30px;
+  font-weight: 100;
+  line-height: 1.1;
+
+  @media screen and (max-width: $breakpoint) {
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-basis: auto;
+    flex-direction: row;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.card-date__year {
+  color: $gray;
+  font-size: 22px;
+
+  @media screen and (max-width: $breakpoint) {
+    margin-left: $base-unit;
+  }
+}
