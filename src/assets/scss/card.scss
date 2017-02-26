@@ -6,6 +6,11 @@ $breakpoint: 600px;
   margin-bottom: $base-unit * 2;
 }
 
+.card-wrapper--open {
+  padding-bottom: $base-unit * 4;
+  border-bottom: 1px dashed $light-gray;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -45,6 +50,8 @@ $breakpoint: 600px;
 
 .card__input-mirror {
   padding: $base-unit;
+  display: flex;
+  flex-wrap: nowrap;
 
   span {
     opacity: 0.5;
@@ -54,6 +61,7 @@ $breakpoint: 600px;
 .card__input-mirror-dots {
   width: $base-unit * 2;
   height: $base-unit * 2;
+  margin-top: $base-unit / 2;
   margin-right: $base-unit * 2;
   opacity: 0.6;
 }

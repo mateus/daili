@@ -90,7 +90,7 @@ class Card extends Component {
     if ((!this.props.open && this.state.items.length > 0) ||
         (this.props.open)) {
       return (
-        <div className="card-wrapper">
+        <div className={this.props.open ? 'card-wrapper card-wrapper--open' : 'card-wrapper'}>
           <div className="card">
             <div className="card__content">
               { this.renderInput() }
