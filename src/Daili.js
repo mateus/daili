@@ -20,13 +20,19 @@ class Daili extends Component {
       {text: 'reprehenderit in voluptate velit esse', id: Date.now() + 4}
     ]
 
+    const fakeTodayData = [
+      { text: 'Added this morning', id: Date.now + 8 },
+      { text: 'Added earlier today', id: Date.now + 7 }
+    ]
+
     return (
       <div>
         <Navbar />
         <Container>
-          <Card date={moment().format()} open />
+          <Card date={moment().format()} items={fakeTodayData} open />
           <Card date={moment().subtract(1, 'days').format()} items={fakeData} />
           <Card date={moment().subtract(2, 'days').format()} items={fakeData2} />
+          <Card date={moment().subtract(3, 'days').format()} items={fakeData2} />
         </Container>
       </div>
     );
