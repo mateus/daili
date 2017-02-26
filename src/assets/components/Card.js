@@ -77,7 +77,11 @@ class Card extends Component {
 
   renderList() {
     return (
-      <List update={this.updateItems} items={this.state.items} />
+      <List
+        update={this.updateItems}
+        items={this.state.items}
+        id={Math.floor(Math.random() * (99999 - 0 + 1)) + 0}
+      />
     );
   }
 

@@ -13,9 +13,9 @@ class Daili extends Component {
     ]
 
     const fakeData2 = [
-      {text: 'Item 1', id: Date.now() + 5},
-      {text: 'Item 2', id: Date.now() + 3},
-      {text: 'Item 3', id: Date.now() + 4}
+      {text: 'Another Item 1', id: Date.now() + 5},
+      {text: 'Another Item 2', id: Date.now() + 3},
+      {text: 'Another Item 3', id: Date.now() + 4}
     ]
 
     return (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import garbage from '../svg/garbage.svg';
 import dots from '../svg/dots.svg';
+// import { debounce } from 'lodash';
 
 class List extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class List extends Component {
     this.dragEnter = this.dragEnter.bind(this);
     this.dragLeave = this.dragLeave.bind(this);
     this.swapItems = this.swapItems.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({items: nextProps.items})
   }
 
   swapItems() {
@@ -47,10 +52,6 @@ class List extends Component {
     this.props.update(tempItems);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({items: nextProps.items})
-  }
-
   dragStart(e) {
     this.fromDrag = e.currentTarget;
     this.fromDragId = e.currentTarget.dataset.key;
@@ -65,6 +66,7 @@ class List extends Component {
 
   dragEnter(e) {
     e.preventDefault();
+
     e.target.classList.add('list__item--dragged-over');
     if (this.toDragId !== e.target.dataset.key) {
       this.toDragId = e.target.dataset.key;
@@ -74,6 +76,7 @@ class List extends Component {
 
   dragLeave(e) {
     e.preventDefault();
+
     if (this.toDragId !== e.target.dataset.key) {
       this.toDragId = e.target.dataset.key;
     }
@@ -82,7 +85,7 @@ class List extends Component {
 
   render() {
     return (
-      <ul className="list">
+      <ul id={this.props.id} className="list">
         {this.state.items.map((item) => {
           return (
             <li
@@ -94,6 +97,7 @@ class List extends Component {
               onDragStart={this.dragStart}
               onDragEnter={this.dragEnter}
               onDragLeave={this.dragLeave}
+              onDragOver={this.dragOver}
             >
               <img className="list__dots" src={dots} alt="dots"/>
               {item.text}
