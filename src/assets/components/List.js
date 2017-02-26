@@ -9,8 +9,10 @@ class List extends Component {
     this.state = {items: this.props.items}
 
     this.toDragId = 0;
+    this.fromDragInnerHTML = '';
     this.dragStart = this.dragStart.bind(this);
     this.dragEnd = this.dragEnd.bind(this);
+    this.dragEnter = this.dragEnter.bind(this);
     this.dragLeave = this.dragLeave.bind(this);
     this.swapItems = this.swapItems.bind(this);
   }
@@ -37,23 +39,37 @@ class List extends Component {
     this.setState({items: tempItems});
   }
 
+  deleteItem(item) {
+    let tempItems = this.state.items;
+    tempItems.splice(tempItems.indexOf(item), 1)
+    this.setState({items: tempItems});
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({items: nextProps.items})
   }
 
   dragStart(e) {
+    this.fromDrag = e.currentTarget;
     this.fromDragId = e.currentTarget.dataset.key;
+
+    this.fromDragInnerHTML = this.fromDrag.innerHTML;
+
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData("text/html", e.currentTarget);
   }
 
   dragEnd(e) {
     this.swapItems();
+    this.fromDrag.innerHTML = this.fromDragInnerHTML;
   }
 
   dragEnter(e) {
     e.preventDefault();
     e.target.classList.add('list__item--dragged-over');
+
+    let nodeText = e.target.innerHTML;
+    this.fromDrag.innerHTML = nodeText;
   }
 
   dragLeave(e) {
@@ -81,7 +97,9 @@ class List extends Component {
             >
               <img className="list__dots" src={dots} alt="dots"/>
               {item.text}
-              <button className="list__remove-button"><img src={garbage} alt="Remove"/></button>
+              <button className="list__remove-button" onClick={this.deleteItem.bind(this, item)}>
+                <img src={garbage} alt="Remove"/>
+              </button>
             </li>
           )
         }, this)}
