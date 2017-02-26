@@ -7,15 +7,15 @@ import Container from './assets/components/Container';
 class Daili extends Component {
   render() {
     const fakeData = [
-      {text: 'Item 1', id: Date.now() + 0},
-      {text: 'Item 2', id: Date.now() + 1},
-      {text: 'Item 3', id: Date.now() + 2}
+      {text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', id: Date.now() + 0},
+      {text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', id: Date.now() + 1},
+      {text: 'ercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in', id: Date.now() + 2}
     ]
 
     const fakeData2 = [
-      {text: 'Another Item 1', id: Date.now() + 5},
-      {text: 'Another Item 2', id: Date.now() + 3},
-      {text: 'Another Item 3', id: Date.now() + 4}
+      {text: 'Lorem ispum', id: Date.now() + 5},
+      {text: 'quis nostrud exercitation ullamco laboris nisi ut aliquip', id: Date.now() + 3},
+      {text: 'reprehenderit in voluptate velit esse', id: Date.now() + 4}
     ]
 
     return (

@@ -23,11 +23,12 @@
   transform: rotate(180deg);
 }
 
-$button-size: 20px;
+$button-size: 18px;
 
 .list__remove-button {
   position: absolute;
   right: $base-unit;
+  top: 50%;
   opacity: 0;
   height: $button-size;
   width: $button-size;
@@ -35,7 +36,7 @@ $button-size: 20px;
   background-color: transparent;
   border: none;
   outline: none;
-
+  transform: translateY(-50%);
 
   img {
     height: 100%;
@@ -50,14 +51,10 @@ $button-size: 20px;
 
 .list__item {
   display: flex;
-  align-items: center;
   padding: $base-unit;
+  padding-right: $base-unit * 5;
   transform: rotate(-180deg);
   background-color: $white;
-
-  span {
-    flex-grow: 1;
-  }
 
   &:hover {
     .list__remove-button {
@@ -70,11 +67,14 @@ $button-size: 20px;
   }
 
   .list__dots {
+    flex-basis: $base-unit * 2;
     width: $base-unit * 2;
     height: $base-unit * 2;
+    margin-top: 2px;
     margin-right: $base-unit * 2;
     transition: opacity 0.1s ease;
     opacity: 0.3;
+    flex-shrink: 0;
   }
 }
 

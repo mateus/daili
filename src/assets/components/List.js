@@ -83,6 +83,10 @@ class List extends Component {
     e.target.classList.remove('list__item--dragged-over');
   }
 
+  capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
     return (
       <ul id={this.props.id} className="list">
@@ -100,7 +104,7 @@ class List extends Component {
               onDragOver={this.dragOver}
             >
               <img className="list__dots" src={dots} alt="dots"/>
-              {item.text}
+              {this.capitalize(item.text)}
               <button className="list__remove-button" onClick={this.deleteItem.bind(this, item)}>
                 <img src={garbage} alt="Remove"/>
               </button>
