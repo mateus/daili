@@ -29,6 +29,7 @@ $breakpoint: 600px;
 
 .card__input {
   background-color: $white;
+  margin-bottom: $base-unit;
   border: 1px solid $light-gray;
   outline: none;
   padding: $base-unit $base-unit 4px;
@@ -42,7 +43,7 @@ $breakpoint: 600px;
 }
 
 .card__input-mirror {
-  margin-top: $base-unit;
+  padding: $base-unit 0;
   opacity: 0.5;
 
   &:before {

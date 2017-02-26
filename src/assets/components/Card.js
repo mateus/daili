@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import List from './List';
 import _ from 'lodash';
 
 class Card extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {value: '', items: this.props.items || []};
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {value: '', items: []};
   }
 
   handleInputChange() {
@@ -32,11 +35,9 @@ class Card extends Component {
   }
 
   renderInputValue() {
-    if (this.state.value) {
-      return (
-        <span className="card__input-mirror">{this.state.value}</span>
-      );
-    }
+    return (
+      <span className="card__input-mirror">{this.state.value || '...'}</span>
+    );
   }
 
   renderInput() {
@@ -66,28 +67,9 @@ class Card extends Component {
   }
 
   renderList() {
-    if (this.props.open && this.state.items.length > 0) {
-      return (
-        <ul>
-          {this.state.items.map(item => (
-            <li key={item.id}>{item.text}</li>
-          ))}
-        </ul>
-      );
-    }
-  }
-
-  renderList2() {
-    if (!this.props.open) {
-      return (
-        <ul>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-        </ul>
-      );
-    }
+    return (
+      <List items={this.state.items} />
+    );
   }
 
   render() {
@@ -97,7 +79,6 @@ class Card extends Component {
           <div className="card__content">
             { this.renderInput() }
             { this.renderList() }
-            { this.renderList2() }
           </div>
           { this.renderButton() }
         </div>

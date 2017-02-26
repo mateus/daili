@@ -1,0 +1,53 @@
+@mixin grab-cursor {
+  cursor: url('https://www.google.com/intl/en_ALL/mapfiles/openhand.cur'), all-scroll;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: -o-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+@mixin grabbing-cursor {
+  cursor: url('https://www.google.com/intl/en_ALL/mapfiles/closedhand.cur'), all-scroll;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: -o-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  transform: rotate(180deg);
+
+  li {
+    padding: $base-unit 0;
+    transform: rotate(-180deg);
+    background-color: $white;
+
+    &:before {
+      content: "•";
+      display: inline-block;
+      padding-right: $base-unit;
+    }
+  }
+}
+
+.list__item--dragged-over {
+  background-color: darken($white, 3%);
+  color: darken($white, 3%);
+
+  &:after {
+    position: absolute;
+  }
+}
+
+[draggable] {
+  @include grab-cursor;
+
+  &:active {
+    @include grabbing-cursor;
+  }
+}
