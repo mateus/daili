@@ -62,7 +62,7 @@ $button-size: 18px;
     }
 
     .list__dots {
-      opacity: 0.8;
+      opacity: 1;
     }
   }
 
@@ -70,10 +70,10 @@ $button-size: 18px;
     flex-basis: $base-unit * 2;
     width: $base-unit * 2;
     height: $base-unit * 2;
-    margin-top: 2px;
+    margin-top: $base-unit / 2;
     margin-right: $base-unit * 2;
     transition: opacity 0.1s ease;
-    opacity: 0.3;
+    opacity: 0.6;
     flex-shrink: 0;
   }
 }

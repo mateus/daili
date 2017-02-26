@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import garbage from '../svg/garbage.svg';
 import dots from '../svg/dots.svg';
-// import { debounce } from 'lodash';
 
 class List extends Component {
   constructor(props) {
@@ -42,7 +41,6 @@ class List extends Component {
     this.setState({items: tempItems});
     tempItems.splice(toId, 0, tempItem);
     this.setState({items: tempItems});
-    this.forceUpdate();
   }
 
   deleteItem(item) {
