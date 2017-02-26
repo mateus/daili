@@ -91,19 +91,22 @@ $breakpoint: 600px;
 
 .card-date {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
   flex-direction: row;
   padding: $base-unit;
   padding-left: 0;
   padding-right: 0;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 100;
   line-height: 1.1;
 }
 
-.card-date__year {
+.card-date__calendar {
+  text-align: right;
+}
+
+.card-date__ll {
+  flex: 1;
+  align-self: flex-end;
   color: $gray;
-  font-size: 22px;
-  margin-left: $base-unit;
+  font-size: 16px;
 }

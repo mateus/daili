@@ -86,6 +86,11 @@ class Card extends Component {
     );
   }
 
+  formatDate() {
+    const dateNow = moment(this.props.date).calendar();
+    return dateNow.slice(0, dateNow.indexOf('at') - 1)
+  }
+
   render() {
     if ((!this.props.open && this.state.items.length > 0) ||
         (this.props.open)) {
@@ -99,8 +104,8 @@ class Card extends Component {
             { this.renderButton() }
           </div>
           <div className="card-date">
-            <span>{moment(this.props.date).format("MMM D")}</span>
-            <span className="card-date__year">{moment(this.props.date).format("YYYY")}</span>
+            <span className="card-date__ll">{moment(this.props.date).format("LL")}</span>
+            <span className="card-date__calendar">{this.formatDate()}</span>
           </div>
         </div>
       );
