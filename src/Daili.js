@@ -7,32 +7,98 @@ import Container from './assets/components/Container';
 import moment from 'moment';
 
 class Daili extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {userData: {}};
+    this.cardClicked = this.cardClicked.bind(this);
+  }
+
+  cardClicked(e) {
+    e.stopPropagation();
+
+    let card = e.target;
+    while (!card.classList.contains('card-wrapper')) {
+      card = card.parentElement;
+    };
+    console.log(card);
+  }
+
+  shouldBeOpen(date) {
+    if (date === moment().format()) { return true };
+    return false;
+  }
+
   render() {
-    const fakeData = [
-      {text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit', id: Date.now() + 0},
-      {text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', id: Date.now() + 1},
-      {text: 'ercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in', id: Date.now() + 2}
-    ]
-
-    const fakeData2 = [
-      {text: 'Lorem ispum', id: Date.now() + 5},
-      {text: 'quis nostrud exercitation ullamco laboris nisi ut aliquip', id: Date.now() + 3},
-      {text: 'reprehenderit in voluptate velit esse', id: Date.now() + 4}
-    ]
-
-    const fakeTodayData = [
-      { text: 'Added this morning', id: Date.now + 8 },
-      { text: 'Added earlier today', id: Date.now + 7 }
-    ]
+    const userData = {
+      name: "Mateus Ferreira Silva",
+      profile_picture: "",
+      logs: [
+        {
+          date: moment().format(),
+          log: [
+            {
+              text: 'Added this morning',
+              id: Date.now
+            },
+            {
+              text: 'Added earlier today',
+              id: Date.now + 1
+            }
+          ]
+        },
+        {
+          date: moment().subtract(1, 'days').format(),
+          log: [
+            {
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+              id: Date.now() + 2
+            },
+            {
+              text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+              id: Date.now() + 3
+            },
+            {
+              text: 'ercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in',
+              id: Date.now() + 4
+            }
+          ]
+        },
+        {
+          date: moment().subtract(2, 'days').format(),
+          log: [
+            {
+              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
+              id: Date.now() + 5
+            },
+            {
+              text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam',
+              id: Date.now() + 6
+            },
+            {
+              text: 'ercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in',
+              id: Date.now() + 7
+            }
+          ]
+        }
+      ]
+    }
 
     return (
       <div>
         <Navbar />
         <Container>
-          <Card date={moment().format()} items={fakeTodayData} open />
-          <Card date={moment().subtract(1, 'days').format()} items={fakeData} />
-          <Card date={moment().subtract(2, 'days').format()} items={fakeData2} />
-          <Card date={moment().subtract(3, 'days').format()} items={fakeData2} />
+          {userData.logs.map((item, i) => {
+            return (
+              <Card
+                handleClick={this.cardClicked}
+                key={i}
+                date={item.date}
+                items={item.log}
+                open={this.shouldBeOpen(item.date)}
+              />
+            );
+          }, this)}
         </Container>
       </div>
     );

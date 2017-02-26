@@ -50,13 +50,18 @@ class Card extends Component {
     );
   }
 
+  placeholderText() {
+    const date = this.formatDate().charAt(0).toLowerCase() + this.formatDate().slice(1);
+    return `What happened ${date}?`;
+  }
+
   renderInput() {
     if (this.props.open) {
       return (
         <form className="card__input-wrapper" onSubmit={this.handleSubmit}>
           <input className="card__input"
             type="text"
-            placeholder="What happened today?"
+            placeholder={this.placeholderText()}
             ref="input"
             onChange={this.handleInputChange}
           />
@@ -69,8 +74,8 @@ class Card extends Component {
   renderButton() {
     if (this.props.open) {
       return (
-        <div className="card__button-wrapper">
-          <button className="card__button">Save</button>
+        <div className="card__footer">
+          <span>EDITING</span>
         </div>
       );
     }
@@ -95,7 +100,10 @@ class Card extends Component {
     if ((!this.props.open && this.state.items.length > 0) ||
         (this.props.open)) {
       return (
-        <div className={this.props.open ? 'card-wrapper card-wrapper--open' : 'card-wrapper'}>
+        <div
+          className={this.props.open ? 'card-wrapper card-wrapper--open' : 'card-wrapper'}
+          onClick={this.props.handleClick}
+          >
           <div className="card">
             <div className="card__content">
               { this.renderInput() }

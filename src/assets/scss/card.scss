@@ -3,11 +3,11 @@ $breakpoint: 600px;
 .card-wrapper {
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: $base-unit * 2;
+  margin-bottom: $base-unit * 4;
 }
 
 .card-wrapper--open {
-  padding-bottom: $base-unit * 4;
+  padding-bottom: $base-unit * 6;
   border-bottom: 1px dashed $light-gray;
 }
 
@@ -66,12 +66,16 @@ $breakpoint: 600px;
   opacity: 0.6;
 }
 
-.card__button-wrapper {
+.card__footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   border-top: 1px solid $light-gray;
   padding: $base-unit;
   background-color: darken($white, 3%);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 2px;
+  color: $crazy-blue;
 }
 
 .card__button {
