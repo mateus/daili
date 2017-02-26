@@ -4,6 +4,8 @@ import Navbar from './assets/components/Navbar';
 import Card from './assets/components/Card';
 import Container from './assets/components/Container';
 
+import moment from 'moment';
+
 class Daili extends Component {
   render() {
     const fakeData = [
@@ -22,10 +24,9 @@ class Daili extends Component {
       <div>
         <Navbar />
         <Container>
-          <Card date="Feb 23, 2017" open />
-          <Card date="Feb 22, 2017" items={fakeData} />
-          <Card date="Feb 21, 2017" items={fakeData2} />
-
+          <Card date={moment().format()} open />
+          <Card date={moment().subtract(1, 'days').format()} items={fakeData} />
+          <Card date={moment().subtract(2, 'days').format()} items={fakeData2} />
         </Container>
       </div>
     );

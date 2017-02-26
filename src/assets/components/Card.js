@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import _ from 'lodash';
+import moment from 'moment';
 import dots from '../svg/dots.svg';
 
 class Card extends Component {
@@ -98,8 +99,8 @@ class Card extends Component {
             { this.renderButton() }
           </div>
           <div className="card-date">
-            <span>Feb, 23</span>
-            <span className="card-date__year">2017</span>
+            <span>{moment(this.props.date).format("MMM D")}</span>
+            <span className="card-date__year">{moment(this.props.date).format("YYYY")}</span>
           </div>
         </div>
       );
