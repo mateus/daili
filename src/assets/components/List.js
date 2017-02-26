@@ -9,7 +9,6 @@ class List extends Component {
     this.state = {items: this.props.items}
 
     this.toDragId = 0;
-    this.fromDragInnerHTML = '';
     this.dragStart = this.dragStart.bind(this);
     this.dragEnd = this.dragEnd.bind(this);
     this.dragEnter = this.dragEnter.bind(this);
@@ -33,16 +32,19 @@ class List extends Component {
 
     let tempItems = this.state.items;
     let tempItem = tempItems[fromId];
-    tempItems[fromId] = tempItems[toId];
-    tempItems[toId] = tempItem;
 
+    tempItems.splice(fromId, 1);
     this.setState({items: tempItems});
+    tempItems.splice(toId, 0, tempItem);
+    this.setState({items: tempItems});
+    this.forceUpdate();
   }
 
   deleteItem(item) {
     let tempItems = this.state.items;
     tempItems.splice(tempItems.indexOf(item), 1)
     this.setState({items: tempItems});
+    this.props.update(tempItems);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,23 +55,21 @@ class List extends Component {
     this.fromDrag = e.currentTarget;
     this.fromDragId = e.currentTarget.dataset.key;
 
-    this.fromDragInnerHTML = this.fromDrag.innerHTML;
-
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData("text/html", e.currentTarget);
   }
 
   dragEnd(e) {
     this.swapItems();
-    this.fromDrag.innerHTML = this.fromDragInnerHTML;
   }
 
   dragEnter(e) {
     e.preventDefault();
     e.target.classList.add('list__item--dragged-over');
-
-    let nodeText = e.target.innerHTML;
-    this.fromDrag.innerHTML = nodeText;
+    if (this.toDragId !== e.target.dataset.key) {
+      this.toDragId = e.target.dataset.key;
+    }
+    this.swapItems();
   }
 
   dragLeave(e) {

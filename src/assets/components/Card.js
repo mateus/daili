@@ -11,6 +11,7 @@ class Card extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateItems = this.updateItems.bind(this);
   }
 
   handleInputChange() {
@@ -33,6 +34,10 @@ class Card extends Component {
 
     this.setState({value: ''});
     this.refs.input.value = '';
+  }
+
+  updateItems(items) {
+    this.setState({items});
   }
 
   renderInputValue() {
@@ -72,26 +77,34 @@ class Card extends Component {
 
   renderList() {
     return (
-      <List items={this.state.items} />
+      <List update={this.updateItems} items={this.state.items} />
     );
   }
 
   render() {
-    return (
-      <div className="card-wrapper">
-        <div className="card">
-          <div className="card__content">
-            { this.renderInput() }
-            { this.renderList() }
+    if ((!this.props.open && this.state.items.length > 0) ||
+        (this.props.open)) {
+      return (
+        <div className="card-wrapper">
+          <div className="card">
+            <div className="card__content">
+              { this.renderInput() }
+              { this.renderList() }
+            </div>
+            { this.renderButton() }
           </div>
-          { this.renderButton() }
+          <div className="card-date">
+            <span>Feb, 23</span>
+            <span className="card-date__year">2017</span>
+          </div>
         </div>
-        <div className="card-date">
-          <span>Feb, 23</span>
-          <span className="card-date__year">2017</span>
+      );
+    } else {
+      return (
+        <div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
