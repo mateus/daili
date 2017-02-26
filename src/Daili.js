@@ -19,6 +19,10 @@ class Daili extends Component {
           <Card date="Feb 23, 2017" open />
           <Card date="Feb 22, 2017" items={fakeData} />
           <Card date="Feb 21, 2017" items={fakeData} />
+          <Card date="Feb 21, 2017" items={fakeData} />
+          <Card date="Feb 21, 2017" items={fakeData} />
+          <Card date="Feb 21, 2017" items={fakeData} />
+          <Card date="Feb 21, 2017" items={fakeData} />
         </Container>
       </div>
     );

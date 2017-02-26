@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './List';
 import _ from 'lodash';
+import dots from '../svg/dots.svg';
 
 class Card extends Component {
   constructor(props) {
@@ -36,7 +37,10 @@ class Card extends Component {
 
   renderInputValue() {
     return (
-      <span className="card__input-mirror">{this.state.value || '...'}</span>
+      <span className="card__input-mirror">
+        <img className="card__input-mirror-dots" src={dots} alt="dots"/>
+        <span>{this.state.value || '...'}</span>
+      </span>
     );
   }
 
@@ -46,7 +50,7 @@ class Card extends Component {
         <form className="card__input-wrapper" onSubmit={this.handleSubmit}>
           <input className="card__input"
             type="text"
-            placeholder="What did I do today?"
+            placeholder="What happened today?"
             ref="input"
             onChange={this.handleInputChange}
           />
