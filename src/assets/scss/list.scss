@@ -30,6 +30,7 @@ $button-size: 18px;
   right: $base-unit;
   top: 50%;
   opacity: 0;
+  right: -20px;
   height: $button-size;
   width: $button-size;
   padding: 0;
@@ -37,6 +38,7 @@ $button-size: 18px;
   border: none;
   outline: none;
   transform: translateY(-50%);
+  transition: all 0.3s ease;
 
   img {
     height: 100%;
@@ -52,13 +54,15 @@ $button-size: 18px;
 .list__item {
   display: flex;
   padding: $base-unit;
-  padding-right: $base-unit * 5;
+  padding-right: 30px;
   transform: rotate(-180deg);
   background-color: $white;
+  overflow: hidden;
 
   &:hover {
     .list__remove-button {
       opacity: 1;
+      right: $base-unit;
     }
 
     .list__dots {
@@ -69,9 +73,9 @@ $button-size: 18px;
   .list__dots {
     flex-basis: $base-unit * 2;
     width: $base-unit * 2;
-    height: $base-unit * 2;
-    margin-top: $base-unit / 2;
-    margin-right: $base-unit * 2;
+    height: 14px;
+    margin-top: 2px;
+    margin-right: 8px;
     transition: opacity 0.1s ease;
     opacity: 0.6;
     flex-shrink: 0;
