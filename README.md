@@ -1,2 +1,2 @@
 # daili
-NodeJS application to create a personal daily log.
+React component to manage lists. (Create, Delete, Rearrange)
